@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.RegisterMapper" >
+    <select id="getUserInfoIsExists"  parameterType="com.bean.UserInfo" resultType="com.bean.UserInfo">
+      select  userName as  userName,password  as password    from user where  userName =#{userName}
+    </select>
+    
+    <insert id="insertUser" parameterType="com.bean.UserInfo" >
+         INSERT INTO `test`.`user`
+          (`id`, `name`, `sex`, `userName`, `password`, `lastLoginTime`, `createTime`, `updateTime`)
+          VALUES (UUID(), #{name}, #{sex},#{userName},#{password}, now(), now(), now());
+    </insert>
+
+
+
+</mapper>
