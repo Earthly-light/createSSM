@@ -50,8 +50,16 @@
             })
             //密码样式修改 待做
             $('#show_login').click(function(){
-                $('#password').addAttr('type','text');
-                $('#password').css('display','none');
+                $('#password').removeAttr('type');
+                $('#password').attr("type","text");
+                $('#show_login').css('display','none');
+                $('#hide_login').css('display','block');
+            })
+            $('#hide_login').click(function(){
+                $('#password').removeAttr('type');
+                $('#password').attr("type","password");
+                $('#hide_login').css('display','none');
+                $('#show_login').css('display','block');
             })
 
 
@@ -169,6 +177,13 @@
                 getCheckCode_register();
                 $('#register_message').css("display","block");
                 $('#register_message').html("验证码不能为空");
+                return;
+            }
+            if(password!=secondPassword){
+                console.log('检验')
+                getCheckCode_register();
+                $('#register_message').css("display","block");
+                $('#register_message').html("密码不一致，请重新输入");
                 return;
             }
             $.ajax({
@@ -308,6 +323,8 @@
                        // window.location.href="<%=basePath%>registerController/";
                         $("#myModalRegister").modal('hide');
                         $("#myModal").modal('show');  //手动开启
+                        $("#userName").val('');
+                        $("#checkCode").val('');
 
                     }
                 })
