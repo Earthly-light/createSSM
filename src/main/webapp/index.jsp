@@ -417,11 +417,11 @@
                             </div>
                             <div class="input-group" style="padding-bottom: 10px">
                                 <span class="input-group-addon">密&emsp;码</span>
-                                <input  id="register_password" type="text" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon1">
+                                <input  id="register_password" type="password" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group" style="padding-bottom: 10px">
                                 <span class="input-group-addon">密&emsp;码</span>
-                                <input  id="register_second_password" type="text" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon1">
+                                <input  id="register_second_password" type="password" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group"  style="padding-bottom: 10px">
                                 <span class="input-group-addon" >验证码</span>
