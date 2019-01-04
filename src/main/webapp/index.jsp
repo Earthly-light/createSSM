@@ -149,6 +149,8 @@
 
         //模态框页面 点击注册 校验验证码
         function register_check() {
+            //register_button
+            $('#register_button').attr('disabled','disabled');
             var userName = $('#register_userName').val();
             var password = $('#register_password').val();
             var secondPassword = $('#register_second_password').val();
@@ -202,23 +204,27 @@
                         getCheckCode_register();
                         $('#register_message').css("display","block");
                         $('#register_message').html("验证码不能为空");
+                        $('#register_button').removeAttr('disabled');
                         return;
                     }
                     if("2"==data){
                         getCheckCode_register();
                         $('#register_message').css("display","block");
                         $('#register_message').html("操作异常，请重新登录");
+                        $('#register_button').removeAttr('disabled');
                         return;
                     }
                     if("4"==data){
                         getCheckCode_register();
                         $('#register_message').css("display","block");
                         $('#register_message').html("验证码不正确");
+                        $('#register_button').removeAttr('disabled');
                         return;
                     }
                     if("3"==data){
                         $('#register_message').css("display","none");
                         $('#register_message').html("");
+                        $('#register_button').removeAttr('disabled');
                         register(userName,password,secondPassword);
                     }
                 }
@@ -232,6 +238,7 @@
                     password:password,
                 },
                 function(data){
+
                     if(data.code=="1"){
                         console.log("用户名为空")
                         getCheckCode();
@@ -322,9 +329,11 @@
                         console.log("注册成功")
                        // window.location.href="<%=basePath%>registerController/";
                         $("#myModalRegister").modal('hide');
+                        $('#register_password').val('');
                         $("#myModal").modal('show');  //手动开启
                         $("#userName").val('');
                         $("#checkCode").val('');
+                        $('#register_second_password').val('');
 
                     }
                 })
@@ -427,7 +436,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                         </button>
-                        <button onclick="register_check()" type="button" class="btn btn-primary">
+                        <button id="register_button" onclick="register_check()" type="button" class="btn btn-primary">
                             注册
                         </button>
                     </div>
